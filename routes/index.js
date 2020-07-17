@@ -47,5 +47,8 @@ router.get("/logout",function(req,res){
 	req.flash("success","Logged You Out");
 	res.redirect("/campgrounds");
 });
+router.get("/rgb",function(req,res){
+	res.render("rgb");
+});
 
 module.exports=router;
