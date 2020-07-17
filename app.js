@@ -1,9 +1,8 @@
 var express=require("express"),
     app=express(),
     bodyparser=require("body-parser"),
-    mongoose=require("mongoose")
-const MongoClient = require('mongodb').MongoClient;
-var flash=require("connect-flash"),
+    mongoose=require("mongoose"),
+    flash=require("connect-flash"),
     passport=require("passport"),
     LocalStrategy=require("passport-local"),
     methodOverride=require("method-override"),
@@ -12,19 +11,15 @@ var flash=require("connect-flash"),
     Comment=require("./models/comment"),
     seedDB=require("./seeds")
 
-const uri = "mongodb+srv://vinay:VinayKaDB@campingbros.6e89b.mongodb.net/YelpCamp?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+
 //requiring routes
 var commentRoutes=require("./routes/comments"),
 	campgroundRoutes=require("./routes/campgrounds"),
 	indexRoutes=require("./routes/index")
 
-mongoose.connect("mongodb://localhost:27017/yelpcamp_v12",{useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect("mongodb://localhost:27017/yelpcamp_v12",{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://vinay:VinayKaDB@campingbros.6e89b.mongodb.net/yelpcamp?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true});
+
 app.use(bodyparser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
