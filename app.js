@@ -1,8 +1,9 @@
 var express=require("express"),
     app=express(),
     bodyparser=require("body-parser"),
-    mongoose=require("mongoose"),
-    flash=require("connect-flash"),
+    mongoose=require("mongoose")
+const MongoClient = require('mongodb').MongoClient;
+var flash=require("connect-flash"),
     passport=require("passport"),
     LocalStrategy=require("passport-local"),
     methodOverride=require("method-override"),
@@ -11,6 +12,13 @@ var express=require("express"),
     Comment=require("./models/comment"),
     seedDB=require("./seeds")
 
+const uri = "mongodb+srv://vinay:VinayKaDB@campingbros.6e89b.mongodb.net/YelpCamp?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 //requiring routes
 var commentRoutes=require("./routes/comments"),
 	campgroundRoutes=require("./routes/campgrounds"),
