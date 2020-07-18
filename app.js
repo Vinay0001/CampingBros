@@ -16,8 +16,8 @@ var express=require("express"),
 var commentRoutes=require("./routes/comments"),
 	campgroundRoutes=require("./routes/campgrounds"),
 	indexRoutes=require("./routes/index")
-
-mongoose.connect(process.env.databaseURL,{useNewUrlParser: true, useUnifiedTopology: true});
+var url=process.env.databaseURL||"mongodb://localhost:27017/yelpcamp_v12"
+mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.set("view engine","ejs");
