@@ -17,8 +17,10 @@ var commentRoutes=require("./routes/comments"),
 	campgroundRoutes=require("./routes/campgrounds"),
 	indexRoutes=require("./routes/index")
 
-//mongoose.connect("mongodb://localhost:27017/yelpcamp_v12",{useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect(" mongodb+srv://vinay:VinayKaDB@campingbros.6e89b.mongodb.net/yelpcamp?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true});
+console.log(process.env.databaseURL);
+mongoose.connect(process.env.databaseURL,{useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect(" mongodb+srv://vinay:VinayKaDB@campingbros.6e89b.mongodb.net/yelpcamp?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true});
+
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.set("view engine","ejs");
@@ -51,6 +53,6 @@ app.use("/",indexRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
-app.listen(process.env.PORT || 5000,function(){
+app.listen(process.env.PORT||5000,function(){
 	console.log("the yelpcamp sever has started");
 })
