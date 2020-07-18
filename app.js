@@ -17,10 +17,7 @@ var commentRoutes=require("./routes/comments"),
 	campgroundRoutes=require("./routes/campgrounds"),
 	indexRoutes=require("./routes/index")
 
-console.log(process.env.databaseURL);
 mongoose.connect(process.env.databaseURL,{useNewUrlParser: true, useUnifiedTopology: true});
-//mongoose.connect(" mongodb+srv://vinay:VinayKaDB@campingbros.6e89b.mongodb.net/yelpcamp?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true});
-
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.set("view engine","ejs");
