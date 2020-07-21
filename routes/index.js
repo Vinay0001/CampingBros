@@ -10,9 +10,7 @@ router.get("/",function(req,res){
 
 
 //auth routes===========
-router.get("/.well-known/pki-validation/",function(req,res){
-	res.render("C8F3D859814EC2838666E9451B9CE70E.txt");
-});
+
 
 
 
