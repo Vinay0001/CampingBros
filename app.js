@@ -11,6 +11,7 @@ var express=require("express"),
     Comment=require("./models/comment"),
     seedDB=require("./seeds")
 
+    app.locals.moment = require('moment');
 
 //requiring routes
 var commentRoutes=require("./routes/comments"),
